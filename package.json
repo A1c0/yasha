@@ -1,0 +1,8 @@
+{
+  "name": "yasha",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/apricity-dev/yasha.git",
+  "author": "Alexandre CONTASSOT <alexandrecontassot@hotmail.fr>",
+  "license": "MIT"
+}
