@@ -1,12 +1,8 @@
 import test from "oletus";
-import { parsedArgs } from "../lib/args-parsing.js";
+import { parsedArgs } from "../lib/argv-parsing.js";
 
 test("could parse command with one params", (t) => {
   t.deepEqual(parsedArgs(["foo", "bar"]), { cmd: "foo", params: ["bar"] });
-  t.deepEqual(parsedArgs(["foo", "bar", "baz"]), {
-    cmd: "foo",
-    params: ["bar", "baz"],
-  });
 });
 
 test("could parse command with multiple params", (t) => {
@@ -41,7 +37,7 @@ test("could parse command with params and options", (t) => {
   });
 });
 
-test("could parse command with params and options", (t) => {
+test("could parse command with params and boolean options", (t) => {
   t.deepEqual(parsedArgs(["foo", "--help"]), {
     cmd: "foo",
     options: { help: true },

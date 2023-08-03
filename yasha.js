@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
-import { runListenYashaServer } from "./lib/server.js";
+import { startYashaServer } from "./lib/server.js";
 
 // const args = parsedArgs(process.argv.slice(2));
 
-const stopServer = runListenYashaServer("http://127.0.0.1:8080", 8081, {
+const stopServer = startYashaServer("http://127.0.0.1:8080", 8081, {
   name: "test",
   outputDir: "reports",
 });
 
-process.on("SIGINT", () => {
-  console.log("SIGINT received");
+process.on("exit", (code) => {
+  console.log(`Exiting with code ${code}...`);
   stopServer();
-  process.exit(0);
+  process.exit(code);
 });
