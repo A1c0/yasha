@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "main": "index.js",
   "type": "module",
-  "bin": "./bin/bin.cjs",
+  "bin": {
+    "yasha": "./bin/yasha.cjs"
+  },
   "author": "Alexandre CONTASSOT <alexandrecontassot@hotmail.fr>",
   "license": "MIT",
   "scripts": {
