@@ -1,8 +1,8 @@
 import http from "http";
 
-import { request } from "./client.js";
-import { Writer } from "./writer.js";
-import { parseJson } from "./json-parser.js";
+import { request } from "../lib/client.js";
+import { Writer } from "../lib/writer.js";
+import { parseJson } from "../lib/json-parser.js";
 
 /**
  * Returns the body of a request

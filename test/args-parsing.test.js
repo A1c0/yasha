@@ -58,3 +58,10 @@ test("could parse command with params and boolean options", (t) => {
     options: { baz: "bab", qux: "quux" },
   });
 });
+
+test("could parse command with only options", (t) => {
+  t.deepEqual(parsedArgs(["--help"]), { options: { help: true } });
+  t.deepEqual(parsedArgs(["--help", "--foo=2"]), {
+    options: { help: true, foo: "2" },
+  });
+});

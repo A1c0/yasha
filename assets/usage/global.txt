@@ -1,0 +1,10 @@
+Usage:  yasha COMMAND
+
+Test an api with ease
+
+Common Commands:
+  listen      Create a test suite based on http requests recorded
+  test        Execute a test suite
+
+Options:
+  -h, --help     show help
