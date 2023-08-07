@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "type": "module",
-  "bin": "./bin/prettier.cjs",
+  "bin": "./bin/bin.cjs",
   "author": "Alexandre CONTASSOT <alexandrecontassot@hotmail.fr>",
   "license": "MIT",
   "scripts": {
