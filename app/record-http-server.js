@@ -47,11 +47,18 @@ export const startYashaServer = (listeningBaseUrl, port, report) => {
   const onRequest = async (req, res) => {
     const url = req.url;
     const method = req.method;
+    const headers = req.headers;
     const body = await getBody(req);
-    const result = await request(`${listeningBaseUrl}${url}`, method, body);
+    const result = await request(
+      `${listeningBaseUrl}${url}`,
+      method,
+      headers,
+      body,
+    );
     writer.writeJson({
       url,
       method,
+      headers,
       body: parseJson(body),
       expectedResult: {
         statusCode: result.statusCode,

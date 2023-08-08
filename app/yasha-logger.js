@@ -12,6 +12,8 @@ const HttpMethod = (value) => {
       return HexColor("#9f824d")("PATCH  ");
     case "DELETE":
       return HexColor("#9d5353")("DELETE ");
+    default:
+      return HexColor("#808080")(value.toUpperCase());
   }
 };
 
