@@ -1,0 +1,11 @@
+Usage: yasha listen <host> [options]
+
+Run a proxy server to record http requests and responses and create a test suite
+
+Options:
+  -p, --port          The proxy port to listen on (default 8080)
+  -n, --name          The name of the test suite (default "yasha-<timestamp>")
+  -d, --report-dir    The directory to save the test suite (default ".")
+  -h, --help          Print usage information
+
+

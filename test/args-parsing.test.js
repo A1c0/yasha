@@ -1,5 +1,5 @@
 import test from "oletus";
-import { parsedArgs } from "../lib/argv-parsing.js";
+import { groupOptions, parsedArgs } from "../lib/argv-parsing.js";
 
 test("could parse command with one params", (t) => {
   t.deepEqual(parsedArgs(["foo", "bar"]), { cmd: "foo", params: ["bar"] });
@@ -64,4 +64,29 @@ test("could parse command with only options", (t) => {
   t.deepEqual(parsedArgs(["--help", "--foo=2"]), {
     options: { help: true, foo: "2" },
   });
+});
+
+test("could group options", (t) => {
+  const optionRules = [
+    { short: "h", long: "help" },
+    { short: "v", long: "version" },
+    { short: "f", long: "foo" },
+  ];
+
+  t.deepEqual(groupOptions(optionRules, { options: { help: true, h: true } }), {
+    options: { help: true },
+  });
+
+  t.deepEqual(groupOptions(optionRules, { options: { h: true, v: true } }), {
+    options: { help: true, version: true },
+  });
+
+  t.deepEqual(
+    groupOptions(optionRules, {
+      options: { help: true, v: true, f: "2", toot: 23 },
+    }),
+    {
+      options: { help: true, version: true, foo: "2", toot: 23 },
+    },
+  );
 });

@@ -3,6 +3,7 @@ import http from "http";
 import { request } from "../lib/client.js";
 import { Writer } from "../lib/writer.js";
 import { parseJson } from "../lib/json-parser.js";
+import { logRequest, yashaLog } from "./yasha-logger.js";
 
 /**
  * Returns the body of a request
@@ -60,15 +61,21 @@ export const startYashaServer = (listeningBaseUrl, port, report) => {
     });
     res.writeHead(result.statusCode, result.headers);
     res.end(result.data);
+    logRequest(method, listeningBaseUrl, url, result.statusCode);
   };
 
   const server = http.createServer(onRequest);
   server.listen(port, () => {
-    console.log(`Yasha server listening on http://localhost:${port}`);
+    yashaLog(
+      `Yasha server listening on http://localhost:${port}. Press Ctrl+C to stop.`,
+    );
   });
 
   return () => {
     writer.terminate();
     server.close();
+    yashaLog(
+      `Yasha server stopped. Report written to ${report.outputDir}/${report.name}.json`,
+    );
   };
 };
