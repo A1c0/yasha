@@ -25,5 +25,5 @@ export const logRequest = (method, host, endpoint, statusCode) => {
 };
 
 export const yashaLog = (message) => {
-  console.log(HexColor("#8e51a2")(message));
+  console.log(HexColor("#c590d7")(message));
 };
