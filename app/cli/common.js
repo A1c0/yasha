@@ -1,9 +1,10 @@
-import path from "path";
-import fs from "fs";
-import { logger } from "../../lib/console.js";
-import url from "url";
+import fs from 'fs';
+import path from 'path';
+import url from 'url';
 
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+import { logger } from '../../lib/console.js';
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 /**
  * Show a usage document
@@ -11,9 +12,9 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
  * @param docName {string} The name of the usage document to show
  * @returns {void}
  */
-export const showUsage = (docName) => {
+export const showUsage = docName => {
   const docPath = path.resolve(__dirname, `../../assets/usage/${docName}.txt`);
-  fs.access(docPath, fs.constants.F_OK, (err) => {
+  fs.access(docPath, fs.constants.F_OK, err => {
     if (err) {
       logger.error(`Usage document '${docPath}' not found.`);
       process.exit(1);
@@ -43,7 +44,7 @@ const parseString = (propName, value) => {
   if (value === undefined) {
     return undefined;
   }
-  if (typeof value !== "string") {
+  if (typeof value !== 'string') {
     logger.error(`Invalid ${propName} value '${value}. Must be a string.'`);
     process.exit(1);
   }

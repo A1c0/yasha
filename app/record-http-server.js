@@ -1,9 +1,9 @@
-import http from "http";
+import http from 'http';
 
-import { request } from "../lib/client.js";
-import { Writer } from "../lib/writer.js";
-import { parseJson } from "../lib/json-parser.js";
-import { logRequest, yashaLog } from "./yasha-logger.js";
+import { request } from '../lib/client.js';
+import { parseJson } from '../lib/json-parser.js';
+import { Writer } from '../lib/writer.js';
+import { logRequest, yashaLog } from './yasha-logger.js';
 
 /**
  * Returns the body of a request
@@ -11,17 +11,17 @@ import { logRequest, yashaLog } from "./yasha-logger.js";
  * @param req {IncomingMessage} - the request
  * @returns {Promise<Buffer>} - the body of the request
  */
-export const getBody = (req) =>
+export const getBody = req =>
   new Promise((resolve, reject) => {
     let body = [];
     req
-      .on("data", (chunk) => {
+      .on('data', chunk => {
         body.push(chunk);
       })
-      .on("end", () => {
+      .on('end', () => {
         resolve(Buffer.concat(body));
       })
-      .on("error", (err) => {
+      .on('error', err => {
         reject(err);
       });
   });
@@ -82,7 +82,7 @@ export const startYashaServer = (listeningBaseUrl, port, report) => {
     writer.terminate();
     server.close();
     yashaLog(
-      `Yasha server stopped. Report written to ${report.outputDir}/${report.name}.json`,
+      `Yasha server stopped. Report written to ${report.outputDir}/${writer.filename}.json`,
     );
   };
 };

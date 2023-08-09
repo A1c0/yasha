@@ -4,7 +4,6 @@ Test an API with ease
 
 Common Commands:
   listen      Create a test suite based on http requests recorded
-  test        Execute a test suite
 
 Options:
   -h, --help      Print usage information
